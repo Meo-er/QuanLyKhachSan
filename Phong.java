@@ -9,9 +9,6 @@ public abstract class Phong {
     private int soGiuong;
     private Boolean tinhTrang;
 
-    public Phong() {
-    }
-
     public Phong(String maPhong, float donGia, int soNguoi, int soGiuong, Boolean tinhTrang) {
         this.maPhong = maPhong;
         this.donGia = donGia;
@@ -60,66 +57,25 @@ public abstract class Phong {
         this.tinhTrang = tinhTrang;
     }
 
-    // public void nhap() {
-    // Scanner sc = new Scanner(System.in);
-    // System.out.print("Nhập mã phòng: ");
-    // maPhong = sc.nextLine();
-    // System.out.print("Nhập đơn giá: ");
-    // donGia = sc.nextFloat();
-    // System.out.print("Nhập số người: ");
-    // soNguoi = sc.nextInt();
-    // System.out.print("Nhập số giường: ");
-    // soGiuong = sc.nextInt();
-    // System.out.print("Nhập tình trạng: ");
-    // tinhTrang = sc.nextBoolean();
-    // }
-
-    // public void xuat() {
-    // System.out.println("Mã phòng: " + maPhong);
-    // System.out.println("Đơn giá: " + donGia + " VND/Ngày");
-    // System.out.println("Số người: " + soNguoi);
-    // System.out.println("Số giường: " + soGiuong);
-    // System.out.println("Tình trạng: " + tinhTrang);
-    // }
-
-    public String kiemTraTinhTrang() {
-        if (tinhTrang == true) {
-            return "Còn phòng";
-        } else {
-            return "Hết phòng";
-        }
-    }
-
-    public Boolean datPhong() {
-        if (tinhTrang) {
-            tinhTrang = false;
-            return true;
-        }
-        return false;
-    }
-
-    public void traPhong() {
-        tinhTrang = true;
-    }
-
-    public static int chonLoaiPhong() {
+    public void nhap() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n=== CHỌN LOẠI PHÒNG ===");
-        System.out.println("1. Phòng Thường");
-        System.out.println("2. Phòng VIP");
-        System.out.print("Chọn loại phòng: ");
-
-        int choice = sc.nextInt();
-        sc.nextLine();
-        return choice;
+        System.out.print("Nhap ma phong: ");
+        maPhong = sc.nextLine();
+        System.out.print("Nhap don gia: ");
+        donGia = sc.nextFloat();
+        System.out.print("Nhap so nguoi: ");
+        soNguoi = sc.nextInt();
+        System.out.print("Nhap so giuong: ");
+        soGiuong = sc.nextInt();
+        System.out.print("Nhap tinh trang: ");
+        tinhTrang = sc.nextBoolean();
     }
 
-    public abstract void nhap();
-
-    public abstract void xuat();
+    public void xuat() {
+        System.out.println("Ma phong: " + maPhong + "\tDon gia: " + donGia + "\tSo nguoi: " + soNguoi + "\tSo giuong: "
+                + soGiuong + "\tTinh trang: " + tinhTrang);
+    }
 
     public abstract String getLoaiPhong();
-
-    public abstract double tinhGiamGia(int soNgay);
 
 }
