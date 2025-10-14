@@ -6,9 +6,6 @@ public class PhongVip extends Phong {
     private String quaChaoMung;
     private String Jacuzzi;
 
-    public PhongVip() {
-    }
-
     public PhongVip(String maPhong, float donGia, int soNguoi, int soGiuong, Boolean tinhTrang, String quaChaoMung,
             String Jacuzzi) {
         super(maPhong, donGia, soNguoi, soGiuong, tinhTrang);
@@ -32,40 +29,24 @@ public class PhongVip extends Phong {
         this.Jacuzzi = Jacuzzi;
     }
 
-    @Override
     public String getLoaiPhong() {
         return "Vip";
     }
 
-    @Override
     public void nhap() {
+        super.nhap();
         Scanner sc = new Scanner(System.in);
-        System.out.println("=== NHẬP THÔNG TIN PHÒNG THƯỜNG ===");
-        System.out.print("Nhập mã phòng: ");
-        this.maPhong = sc.nextLine();
-        System.out.print("Nhập đơn giá: ");
-        this.donGia = sc.nextFloat();
-        System.out.print("Nhập số người: ");
-        this.soNguoi = sc.nextInt();
-        System.out.print("Nhập số giường: ");
-        this.soGiuong = sc.nextInt();
-        System.out.print("Nhập tình trạng: ");
-        this.tinhTrang = sc.nextBoolean();
+        System.out.println("=== NHAP THONG TIN PHONG VIP ===");
+        System.out.print("Nhap qua chao mung: ");
+        quaChaoMung = sc.nextLine();
+        System.out.print("Nhap loai Jacuzzi: ");
         sc.nextLine();
     }
 
-    @Override
     public void xuat() {
-        System.out.println("Mã phòng: " + maPhong);
-        System.out.println("Đơn giá: " + donGia + " VND/Ngày");
-        System.out.println("Loại phòng: " + getLoaiPhong());
-        System.out.println("Số người: " + soNguoi);
-        System.out.println("Số giường: " + soGiuong);
-        System.out.println("Tình trạng: " + kiemTraTinhTrang());
+        super.xuat();
+        System.out.println(
+                "Loai phong: " + getLoaiPhong() + "\tQua chao mung: " + quaChaoMung + "\tLoai Jacuzzi: " + Jacuzzi);
     }
 
-    public void chonLoaiJacuzzi() {
-        Scanner sc = new Scanner(System.in);
-
-    }
 }
