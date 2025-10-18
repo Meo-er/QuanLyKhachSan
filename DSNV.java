@@ -1,4 +1,4 @@
-package Do_an_OOP;
+package Doan;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -34,7 +34,6 @@ public class DSNV {
         dsnv = Arrays.copyOf(dsnv, dsnv.length + 1);
         dsnv[soluong] = nvMoi;
         soluong++;
-        System.out.println("Them sinh vien thanh cong!");
 
     }
 
@@ -58,6 +57,7 @@ public class DSNV {
                 return dsnv[i];
             }
         }
+        System.out.println("Khong tim thay ma " + maCanTim);
         return null;
     }
 
@@ -102,6 +102,7 @@ public class DSNV {
         for (int i = 0; i < soluong; i++) {
             if (dsnv[i].getchucvu().equalsIgnoreCase(chucVuCanTim)) {
                 dsTimThay.them(dsnv[i]);
+
             }
         }
         if (dsTimThay.soluong == 0)
@@ -123,21 +124,25 @@ public class DSNV {
                         System.out.print("Nhap ho moi: ");
                         String hoMoi = sc.nextLine();
                         dsnv[i].setHo(hoMoi);
+                        System.out.println("Thay doi thanh cong!");
                         break;
                     case 2:
                         System.out.print("Nhap ten moi: ");
                         String tenMoi = sc.nextLine();
                         dsnv[i].setTen(tenMoi);
+                        System.out.println("Thay doi thanh cong!");
                         break;
                     case 3:
                         System.out.print("Nhap chuc vu moi: ");
                         String chucVuMoi = sc.nextLine();
                         dsnv[i].setchucvu(chucVuMoi);
+                        System.out.println("Thay doi thanh cong!");
                         break;
                     case 4:
                         System.out.print("Nhap luong moi: ");
                         double luongMoi = sc.nextDouble();
                         dsnv[i].setLuong(luongMoi);
+                        System.out.println("Thay doi thanh cong!");
                         break;
                     case 0:
 
@@ -151,28 +156,130 @@ public class DSNV {
             }
 
         }
+        System.out.print("Khong tim thay nhan vien co ma " + maCanSua);
 
     }
 
     public void xoa(String maCanXoa) {
         for (int i = 0; i < soluong; i++) {
             if (dsnv[i].getmanv().equals(maCanXoa)) {
-                for (int j = i; j < soluong; j++) {
+                for (int j = i; j < soluong - 1; j++) {
                     dsnv[j] = dsnv[j + 1];
-                    soluong--;
-                    return;
+
                 }
+                soluong--;
+                dsnv = Arrays.copyOf(dsnv, soluong);
+                return;
             }
 
         }
         System.out.println("Khong tim thay nhan vien co ma: " + maCanXoa);
     }
 
+    public void menuTimKiem() {
+        Scanner sc = new Scanner(System.in);
+        int luaChon;
+        do {
+            System.out.println("\n\t\t\t\t\t==========MENU TIM KIEM==========");
+
+            System.out.printf("%-10s %-10s %-10s %-10s %-10s %-10s %-10s\n", "Lua chon:", "0.Thoat", "1.Ma NV", "2.Ho",
+                    "3.Ten",
+                    "4.Ho Ten", " 5.Chuc vu");
+            System.out.print("Nhap lua chon: ");
+            luaChon = sc.nextInt();
+            sc.nextLine();
+
+            switch (luaChon) {
+                case 1:
+                    System.out.print("Nhap ma can tim: ");
+                    String maCanTim = sc.nextLine();
+                    NhanVien timThay = timNVTheoMa(maCanTim);
+                    timThay.xuat();
+                    break;
+                case 2:
+                    System.out.print("Nhap ho can tim: ");
+                    String hoCanTim = sc.nextLine();
+                    timNVTheoHo(hoCanTim);
+                    DSNV dsTimThay = timNVTheoHo(hoCanTim);
+                    dsTimThay.xuat();
+                    break;
+                case 3:
+                    System.out.print("Nhap ten can tim: ");
+                    String tenCanTim = sc.nextLine();
+                    timNVTheoTen(tenCanTim);
+                    dsTimThay = timNVTheoTen(tenCanTim);
+                    dsTimThay.xuat();
+                    break;
+                case 4:
+                    System.out.print("Nhap ho, ten can tim: ");
+                    System.out.print("Ho: ");
+                    hoCanTim = sc.nextLine();
+                    System.out.print("Ten: ");
+                    tenCanTim = sc.nextLine();
+                    dsTimThay = timNVTheoHoTen(hoCanTim, tenCanTim);
+                    dsTimThay.xuat();
+                    break;
+                case 5:
+                    System.out.print("Nhap chuc vu can tim: ");
+                    String chucVuCanTim = sc.nextLine();
+                    dsTimThay = timNVTheoChucVu(chucVuCanTim);
+                    dsTimThay.xuat();
+                    break;
+                case 0:
+                    return;
+            }
+        } while (luaChon != 0);
+
+    }
+
+    public void menuNhanVien() {
+        Scanner sc = new Scanner(System.in);
+        int luaChon;
+        do {
+            System.out.println("\n\t\t\t\t\t==========MENU NHAN VIEN==========");
+
+            System.out.println(
+                    "Lua chon: \n0.Thoat \n1. Xem danh sach nhan vien \n2.Them nhan vien \n3.Sua nhan vien \n4.Xoa nhan vien \n5.Tim kiem nhan vien \n6.");
+            System.out.print("Nhap lua chon: ");
+            luaChon = sc.nextInt();
+            sc.nextLine();
+            switch (luaChon) {
+                case 1:
+                    System.out.println("\t\t\t\t\t==========DANH SACH NHAN VIEN==========");
+                    xuat();
+                    break;
+                case 2:
+                    System.out.println("\t\t\t\t\t==========THEM NHAN VIEN==========");
+                    them();
+                    break;
+                case 3:
+                    System.out.println("\t\t\t\t\t==========SUA NHAN VIEN==========");
+                    System.out.print("Nhap ma can sua: ");
+                    String maCanSua = sc.nextLine();
+                    sua(maCanSua);
+                    break;
+                case 4:
+                    System.out.println("\t\t\t\t\t==========XOA NHAN VIEN==========");
+                    System.out.print("Nhap ma can xoa: ");
+                    String maCanXoa = sc.nextLine();
+                    sua(maCanXoa);
+                    break;
+                case 5:
+                    menuTimKiem();
+                    break;
+                case 0:
+                    return;
+
+            }
+        } while (luaChon != 0);
+
+    }
+
     public void xuat() {
-        System.out.println("========DANH SACH NHAN VIEN========");
+        System.out.printf("%-10s %-15s %-10s %-15s %-10s\n",
+                "Ma NV", "Ho", "Ten", "Chuc vu", "Luong");
         for (int i = 0; i < soluong; i++) {
-            System.out.printf("%-10s %-15s %-10s %-15s %-10s\n",
-                    "Ma NV", "Ho", "Ten", "Chuc vu", "Luong");
+
             dsnv[i].xuat();
         }
     }
@@ -181,7 +288,6 @@ public class DSNV {
         DSNV dsnv = new DSNV();
         NhanVien nv1 = new NhanVien("01", "1", "1", "1", 1);
         dsnv.them(nv1);
-        dsnv.sua("01");
-        dsnv.xuat();
+        dsnv.menuNhanVien();
     }
 }
