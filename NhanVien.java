@@ -3,30 +3,30 @@ package Do_an_OOP;
 import java.util.Scanner;
 
 public class NhanVien {
-    private String maNV, ho, ten, chucVu;
+    private String manv, ho, ten, chucvu;
     double luong;
 
     public NhanVien() {
     };
 
-    public NhanVien(String maNV, String ho, String ten, String chucVu, double luong) {
-        this.maNV = maNV;
+    public NhanVien(String manv, String ho, String ten, String chucvu, double luong) {
+        this.manv = manv;
         this.ho = ho;
         this.ten = ten;
-        this.chucVu = chucVu;
+        this.chucvu = chucvu;
         this.luong = luong;
     }
 
     public NhanVien(NhanVien nv) {
-        maNV = nv.maNV;
+        manv = nv.manv;
         ho = nv.ho;
         ten = nv.ten;
-        chucVu = nv.chucVu;
+        chucvu = nv.chucvu;
         luong = nv.luong;
     }
 
-    public String getMaNV() {
-        return maNV;
+    public String getmanv() {
+        return manv;
     }
 
     public String getHo() {
@@ -37,16 +37,16 @@ public class NhanVien {
         return ten;
     }
 
-    public String getChucVu() {
-        return chucVu;
+    public String getchucvu() {
+        return chucvu;
     }
 
     public double getLuong() {
         return luong;
     }
 
-    public void setMaNV(String maNV) {
-        this.maNV = maNV;
+    public void setmanv(String manv) {
+        this.manv = manv;
     }
 
     public void setHo(String ho) {
@@ -57,31 +57,38 @@ public class NhanVien {
         this.ten = ten;
     }
 
-    public void setChucVu(String chucVu) {
-        this.chucVu = chucVu;
+    public void setchucvu(String chucvu) {
+        this.chucvu = chucvu;
     }
 
     public void setLuong(double luong) {
         this.luong = luong;
     }
 
-    public void nhapNV() {
+    public void nhap() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ma NV: ");
-        maNV = sc.nextLine();
+        this.setmanv(sc.nextLine());
         System.out.print("Nhap ho: ");
-        ho = sc.nextLine();
+        this.setHo(sc.nextLine());
         System.out.print("Nhap ten: ");
-        ten = sc.nextLine();
+        this.setTen(sc.nextLine());
         System.out.print("Nhap chuc vu: ");
-        chucVu = sc.nextLine();
+        this.setchucvu(sc.nextLine());
         System.out.print("Nhap luong: ");
-        luong = sc.nextDouble();
+        this.setLuong(sc.nextDouble());
+        System.out.println("-----");
     }
 
-    public void xuatNV() {
-        System.out.print(
-                "Ma NV: " + maNV + "\tHo: " + ho + "\tTen: " + ten + "\tChuc vu: " + chucVu + "\tLuong: " + luong);
+    public void xuat() {
+        System.out.printf("%-10s %-15s %-10s %-15s %-10.2f\n",
+                manv, ho, ten, chucvu, luong);
 
+    }
+
+    public static void main(String[] args) {
+        NhanVien nv = new NhanVien();
+        nv.nhap();
+        nv.xuat();
     }
 }
