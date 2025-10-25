@@ -1,4 +1,4 @@
-package Do_an_OOP;
+package Doan;
 
 import java.util.Scanner;
 
@@ -25,7 +25,7 @@ public class NhanVien {
         luong = nv.luong;
     }
 
-    public String getmanv() {
+    public String getMaNV() {
         return manv;
     }
 
@@ -45,7 +45,7 @@ public class NhanVien {
         return luong;
     }
 
-    public void setmanv(String manv) {
+    public void setMaNV(String manv) {
         this.manv = manv;
     }
 
@@ -68,7 +68,7 @@ public class NhanVien {
     public void nhap() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ma NV: ");
-        this.setmanv(sc.nextLine());
+        this.setMaNV(sc.nextLine());
         System.out.print("Nhap ho: ");
         this.setHo(sc.nextLine());
         System.out.print("Nhap ten: ");
@@ -82,7 +82,7 @@ public class NhanVien {
 
     public void xuat() {
         System.out.printf("%-10s %-15s %-10s %-15s %-10.2f\n",
-                manv, ho, ten, chucvu, luong);
+                this.getMaNV(), this.getHo(), this.getTen(), this.getchucvu(), this.getLuong());
 
     }
 

@@ -1,15 +1,16 @@
-package Do_an_OOP;
+package Doan;
 
 import java.util.Scanner;
 
 public class KhachHang {
-    private String maKH, ho, ten, sdt, email;
+    private String makh, ho, ten, email;
+    private long sdt;
 
     public KhachHang() {
     };
 
-    public KhachHang(String maKH, String ho, String ten, String sdt, String email) {
-        this.maKH = maKH;
+    public KhachHang(String makh, String ho, String ten, long sdt, String email) {
+        this.makh = makh;
         this.ho = ho;
         this.ten = ten;
         this.sdt = sdt;
@@ -17,7 +18,7 @@ public class KhachHang {
     }
 
     public KhachHang(KhachHang kh) {
-        maKH = kh.maKH;
+        makh = kh.makh;
         ho = kh.ho;
         ten = kh.ten;
         sdt = kh.sdt;
@@ -25,7 +26,7 @@ public class KhachHang {
     }
 
     public String getMaKH() {
-        return maKH;
+        return makh;
     }
 
     public String getHo() {
@@ -36,7 +37,7 @@ public class KhachHang {
         return ten;
     }
 
-    public String getSdt() {
+    public long getSdt() {
         return sdt;
     }
 
@@ -44,8 +45,8 @@ public class KhachHang {
         return email;
     }
 
-    public void setMaKH(String maKH) {
-        this.maKH = maKH;
+    public void setMaKH(String makh) {
+        this.makh = makh;
     }
 
     public void setHo(String ho) {
@@ -56,7 +57,7 @@ public class KhachHang {
         this.ten = ten;
     }
 
-    public void setSdt(String sdt) {
+    public void setSdt(long sdt) {
         this.sdt = sdt;
     }
 
@@ -64,21 +65,30 @@ public class KhachHang {
         this.email = email;
     }
 
-    public void nhapKH() {
+    public void nhap() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhap ma KH: ");
-        maKH = sc.nextLine();
+        this.setMaKH(sc.nextLine());
         System.out.print("Nhap ho: ");
-        ho = sc.nextLine();
+        this.setHo(sc.nextLine());
         System.out.print("Nhap ten: ");
-        ten = sc.nextLine();
+        this.setTen(sc.nextLine());
         System.out.print("Nhap SDT: ");
-        sdt = sc.nextLine();
+        this.setSdt(sc.nextLong());
+        sc.nextLine();
         System.out.print("Nhap email: ");
-        email = sc.nextLine();
+        this.setEmail(sc.nextLine());
+
     }
 
-    public void xuatKH() {
-        System.out.print("Ma KH: " + maKH + "\tHo: " + ho + "\tTen:" + ten + "\tSDT:" + sdt + "\tEmail: " + email);
+    public void xuat() {
+        System.out.printf("%-15s %-10s %-10s %-15s %-15s\n", this.getMaKH(), this.getHo(), this.getTen(),
+                this.getSdt(), this.getEmail());
+    }
+
+    public static void main(String[] args) {
+        KhachHang kh = new KhachHang();
+        kh.nhap();
+        kh.xuat();
     }
 }
