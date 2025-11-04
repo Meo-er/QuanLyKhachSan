@@ -1,0 +1,10 @@
+P001,500000.0,2,1,con,Thuong,100000.0,50000.0
+P002,800000.0,3,2,con,Thuong,150000.0,75000.0
+P003,1200000.0,4,2,khong con,Thuong,200000.0,100000.0
+P004,2000000.0,2,1,con,Vip,Banh keo mien phi,Jacuzzi Tieu Chuan
+P005,3000000.0,3,2,con,Vip,Nuoc trai cay mien phi,Jacuzzi Ngoai Troi
+P006,2500000.0,2,1,khong con,Vip,Banh keo mien phi,Jacuzzi Trong Nha
+P007,600000.0,2,1,con,Thuong,120000.0,60000.0
+P008,900000.0,4,2,khong con,Thuong,180000.0,90000.0
+P009,3500000.0,2,1,con,Vip,Nuoc trai cay mien phi,Jacuzzi Cao Cap
+P010,1500000.0,3,2,con,Thuong,170000.0,85000.0

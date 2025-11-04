@@ -1,0 +1,20 @@
+DV01,Don phong,50000,10,Don sach se hang ngay
+DV02,Giat ui,30000,15,Giat quan ao cho khach
+DV03,Thue xe,200000,5,Cho thue xe 4 cho
+DV04,An sang,70000,20,Bua an sang don gian
+DV05,An toi,120000,18,Bua toi day du mon an
+DV06,Massage,250000,8,Dich vu massage thu gian
+DV07,Dat ve may bay,150000,6,Ho tro dat ve may bay
+DV08,Cham soc xe,80000,12,Rua va cham soc oto
+DV09,Truyen hinh cap,40000,25,Dich vu TV phong
+DV10,Internet,30000,30,WIFI toc do cao
+DV11,Nuoc uong,20000,40,Cac loai nuoc giai khat
+DV12,Giu hanh ly,10000,50,Luu tru hanh ly khach
+DV13,Don san bay,180000,7,Dich vu dua don san bay
+DV14,Huong dan vien,220000,4,Huong dan du lich
+DV15,In tai lieu,15000,10,In an tai lieu giay to
+DV16,Trang tri phong,100000,6,Trang tri theo yeu cau
+DV17,Thue phong hop,400000,3,Cho thue phong hop cao cap
+DV18,Giai tri,60000,20,Truy cap phong karaoke
+DV19,Chup anh,200000,5,Chup anh ky niem
+DV20,Ve sinh xe,50000,10,Ve sinh noi that oto

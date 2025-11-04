@@ -1,0 +1,10 @@
+NV01,An, Nam, LeTan,6500000.0
+NV02,Binh, Hoa, ThuNgan,7200000.0
+NV03,Chi, Tam, BuongPhong,6000000.0
+NV04,Dung, Huy, LeTan,6500000.0
+NV05,Giang, My, QuanLy,1.2E7
+NV06,Hao, Linh, BaoVe,5500000.0
+NV07,Khanh, Nhi, ThuNgan,7000000.0
+NV08,Lam, Phu, BuongPhong,6000000.0
+NV09,Mai, Anh, QuanLy,1.25E7
+NV10,Nam, Truong, BaoVe,5500000.0
