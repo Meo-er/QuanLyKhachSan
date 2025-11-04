@@ -1,4 +1,4 @@
-package QuanLyKhachSan;
+package Doan;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,21 +32,8 @@ public class DSHD {
 
     public void nhap() {
         Scanner sc = new Scanner(System.in);
-        soLuong = 0;
-        while (true) {
-            System.out.print("Nhap so luong hoa don: ");
-            try {
-                soLuong = sc.nextInt();
-                if (soLuong < 0)
-                    System.out.println("So luong khong hop le! Vui long nhap lai: ");
-                else
-                    break;
-            } catch (Exception e) {
-                System.out.println("Ban phai nhap so nguyen! Vui long nhap lai: ");
-                sc.nextLine();
-            }
-
-        }
+        System.out.print("Nhap so luong hoa don: ");
+        soLuong = sc.nextInt();
         dshd = new HoaDon[soLuong];
         for (int i = 0; i < soLuong; i++) {
             HoaDon hdMoi = new HoaDon();
@@ -64,7 +51,7 @@ public class DSHD {
 
     public void them(HoaDon hdMoi) {
         dshd = Arrays.copyOf(dshd, dshd.length + 1);
-        dshd[soLuong] = hdMoi;
+        dshd[dshd.length - 1] = hdMoi;
         soLuong++;
 
     }
@@ -72,20 +59,10 @@ public class DSHD {
     public void them() {
         Scanner sc = new Scanner(System.in);
         int them = 0;
-        while (true) {
-            System.out.print("Nhap so luong can them: ");
-            try {
-                them = sc.nextInt();
-                sc.nextLine();
-                if (them < 0)
-                    System.out.println("So luong khong hop le, vui long nhap lai: ");
-                else
-                    break;
-            } catch (Exception e) {
-                System.out.println("Ban phai nhap so nguyen! Vui long nhap lai: ");
-                sc.nextLine();
-            }
-        }
+        System.out.print("Nhap so luong can them: ");
+
+        them = sc.nextInt();
+        sc.nextLine();
 
         for (int i = 0; i < them; i++) {
             System.out.println("Hoa don thu " + (soLuong + 1));
@@ -100,27 +77,17 @@ public class DSHD {
     }
 
     public HoaDon timTheoMaHD(String maCanTim) {
-        for (int i = 0; i < soLuong; i++) {
-            if (dshd[i].getMaHD().equals(maCanTim)) {
-                System.out.printf("%-10s %-10s %-10s %-15s %-15s %-15s %-15s %-15s %-25.22s ", "Ma HD", "Ma DP",
-                        "Ma NV",
-                        "Ngay dat phong", "Ngay tra phong", "Tong tien DP", "Tong tien DV", "Tong cong",
-                        "Thoi gian tao hoa don");
-                return dshd[i];
-            }
+        for (HoaDon hd : dshd) {
+            if (hd.getMaHD().equals(maCanTim))
+                return hd;
         }
         return null;
     }
 
     public HoaDon timTheoMaDP(String maCanTim) {
-        for (int i = 0; i < soLuong; i++) {
-            if (dshd[i].getMaDP().equals(maCanTim)) {
-                System.out.printf("%-10s %-10s %-10s %-15s %-15s %-15s %-15s %-15s %-25.22s ", "Ma HD", "Ma DP",
-                        "Ma NV",
-                        "Ngay dat phong", "Ngay tra phong", "Tong tien DP", "Tong tien DV", "Tong cong",
-                        "Thoi gian tao hoa don");
-                return dshd[i];
-            }
+        for (HoaDon hd : dshd) {
+            if (hd.getMaDP().equals(maCanTim))
+                return hd;
         }
         return null;
     }
@@ -134,6 +101,12 @@ public class DSHD {
             }
         }
         return dsTimThay;
+    }
+
+    public void sua() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap ma HD can sua: ");
+        String maCanSua = sc.nextLine();
     }
 
     public void sua(String maCanSua) {
@@ -176,6 +149,12 @@ public class DSHD {
         if (!timThay) {
             System.out.print("Khong tim thay hoa don co ma " + maCanSua + ".");
         }
+    }
+
+    public void xoa() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhap ma HD can xoa: ");
+        String maCanXoa = sc.nextLine();
     }
 
     public void xoa(String maCanXoa) {
@@ -282,6 +261,56 @@ public class DSHD {
 
     }
 
+    public void menuHoaDon() {
+        Scanner sc = new Scanner(System.in);
+        int luaChon;
+        do {
+            System.out.println("\n\t\t\t\t\t==========MENU HOA DON==========");
+
+            System.out.println(
+                    "Lua chon: \n0. Thoat \n1. Xem danh sach hoa don \n2. Them hoa don \n3. Sua hoa don \n4. Xoa hoa don \n5. Tim kiem hoa don \n6. Thong ke.");
+            System.out.print("Nhap lua chon: ");
+            luaChon = sc.nextInt();
+            sc.nextLine();
+            switch (luaChon) {
+                case 1:
+                    System.out.println("\t\t\t\t\t==========DANH SACH HOA DON==========");
+                    xuat();
+                    ghiFile();
+                    break;
+                case 2:
+                    System.out.println("\t\t\t\t\t==========THEM HOA DON==========");
+                    them();
+                    ghiFile();
+                    break;
+                case 3:
+                    System.out.println("\t\t\t\t\t==========SUA HOA DON==========");
+                    System.out.print("Nhap ma can sua: ");
+                    sua();
+                    ghiFile();
+                    break;
+                case 4:
+                    System.out.println("\t\t\t\t\t==========XOA HOA DON==========");
+                    System.out.print("Nhap ma can xoa: ");
+                    String maCanXoa = sc.nextLine();
+                    xoa(maCanXoa);
+                    break;
+                case 5:
+                    menuTimKiem();
+                    break;
+                case 6:
+                    System.out.println("\t\t\t\t\t==========THONG KE DOANH THU==========");
+                    thongKeDoanhThuTheoNV();
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("Lua chon khong hop le!");
+            }
+        } while (luaChon != 0);
+
+    }
+
     public void xuat() {
         System.out.printf("%-10s %-10s %-10s %-15s %-15s %-15s %-15s %-15s %-15s\n", "Ma HD", "Ma DP", "Ma NV",
                 "Ngay dat phong", "Ngay tra phong", "Tong tien DP", "Tong tien DV", "Tong cong",
@@ -292,7 +321,7 @@ public class DSHD {
     }
 
     public void ghiFile() {
-        File file = new File("QuanLyKhachSan/src/Doan/HoaDon.txt");
+        File file = new File("QuanLyKhachSan/src/Doan/Hoadon.txt");
         try (PrintWriter pw = new PrintWriter(file)) {
             for (HoaDon hd : dshd) {
                 pw.println(hd.toString());
@@ -305,37 +334,40 @@ public class DSHD {
     }
 
     public void docFile() {
-        File file = new File("QuanLyKhachSan/src/Doan/HoaDon.txt");
+        File file = new File("QuanLyKhachSan/src/Doan/Hoadon.txt");
+
         if (!file.exists()) {
-            System.out.println("Khong tim thay file!");
+            System.out.println("Khong tim thay file hoa don!");
         }
+
         try (Scanner sc = new Scanner(file)) {
             DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             while (sc.hasNextLine()) {
                 String line = sc.nextLine();
                 String[] parts = line.split(",");
-                if (parts.length == 7) {
+                if (parts.length == 8) {
                     LocalDate ngayDP = LocalDate.parse(parts[3], fmt);
                     LocalDate ngayTP = LocalDate.parse(parts[4], fmt);
                     Double tongTienDP = Double.parseDouble(parts[5]);
                     Double tongTienDV = Double.parseDouble(parts[6]);
-                    HoaDon hd = new HoaDon(parts[0], parts[1], parts[2], ngayDP, ngayTP, tongTienDP, tongTienDV);
-                    dshd = Arrays.copyOf(dshd, dshd.length + 1);
-                    dshd[dshd.length - 1] = hd;
-                    soLuong++;
-
+                    Double tongcong = Double.parseDouble(parts[7]);
+                    HoaDon hd = new HoaDon(parts[0], parts[1], parts[2], ngayDP, ngayTP, tongTienDP, tongTienDV,
+                            tongcong);
+                    them(hd);
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Loi doc file");
+            System.out.println("Loi doc file hoa don");
         }
+
     }
 
-    // public static void main(String[] args) {
-    // DSHD dshd = new DSHD();
-    // dshd.docFile();
-    // dshd.xuat();
-
-    // }
+    public static void main(String[] args) {
+        DSHD dshd = new DSHD();
+        dshd.docFile();
+        dshd.xuat();
+        dshd.menuHoaDon();
+        dshd.ghiFile();
+    }
 
 }

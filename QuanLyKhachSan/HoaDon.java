@@ -1,4 +1,4 @@
-package QuanLyKhachSan;
+package Doan;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class HoaDon {
     };
 
     public HoaDon(String maHD, String maDP, String maNV, LocalDate ngayDP, LocalDate ngayTP, double tongtienDP,
-            double tongtienDV) {
+            double tongtienDV, double tongcong) {
         this.maHD = maHD;
         this.maDP = maDP;
         this.maNV = maNV;
@@ -27,7 +27,7 @@ public class HoaDon {
         this.ngayTP = ngayTP;
         this.tongtienDP = tongtienDP;
         this.tongtienDV = tongtienDV;
-        this.tongcong = tongtienDP + tongtienDV;
+        this.tongcong = tongcong;
         this.thoiGianTaoHD = LocalDateTime.now();
     }
 
@@ -107,10 +107,6 @@ public class HoaDon {
         this.tongcong = tongcong;
     }
 
-    public long tinhSoNgay() {
-        return java.time.temporal.ChronoUnit.DAYS.between(ngayDP, ngayTP);
-    }
-
     public void tinhTongCong() {
         {
             tongtienDP = 0;
@@ -141,10 +137,7 @@ public class HoaDon {
         maDP = sc.nextLine();
         System.out.print("Nhap ma nhan vien lap hoa don: ");
         maNV = sc.nextLine();
-        System.out.print("Nhap ngay dat phong (dd/MM/yyyy): ");
-        ngayDP = LocalDate.parse(sc.nextLine(), formatter);
-        System.out.print("Nhap ngay tra phong (dd/MM/yyyy): ");
-        ngayTP = LocalDate.parse(sc.nextLine(), formatter);
+
         System.out.print("Nhap so luong chi tiet hoa don: ");
         int n = sc.nextInt();
         sc.nextLine();
@@ -175,7 +168,8 @@ public class HoaDon {
 
     @Override
     public String toString() {
-        return maHD + "," + maDP + "," + maNV + "," + ngayDP + "," + ngayTP + "," + tongtienDP + "," + tongtienDV;
+        return maHD + "," + maDP + "," + maNV + "," + ngayDP + "," + ngayTP + "," + tongtienDP + "," + tongtienDV + ","
+                + tongcong;
     }
 
     public static void main(String[] args) {
